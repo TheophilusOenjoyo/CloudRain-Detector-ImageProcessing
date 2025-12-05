@@ -1,4 +1,4 @@
-# ☁️ Cloud Rain Detector (Computer Vision)
+# ☁️ Cloud Rain Detector Image Processing
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![OpenCV](https://img.shields.io/badge/Library-OpenCV-green.svg)
@@ -82,7 +82,7 @@ pip install opencv-python numpy PyQt6
 
 | Main Interface | Analysis Result | HTML Report |
 |:---:|:---:|:---:|
-| *Place screenshot of the GUI here* | *Place screenshot of a result here* | *Place screenshot of the HTML report* |
+| <img src="assets/Main-Interface.png" width="300"> | <img src="assets/HTML-Report.png" width="300"> | <img src="assets/HTML-Report.png" width="300"> |
 
 -----
 
