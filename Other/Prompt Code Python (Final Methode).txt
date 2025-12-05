@@ -1,0 +1,50 @@
+Prompt Code Python (Final: Binary Class)
+
+***
+
+**Role:** Python Developer (OpenCV & PyQt6).
+
+**Tugas:** Buat aplikasi "Deteksi Hujan" menggunakan **Analisis Frekuensi (Laplacian)** dan **Intensitas**. Output klasifikasi harus **BINER (Yes/No)**.
+
+**Fitur GUI:**
+1.  **Layout:**
+    * Tombol "Upload Gambar".
+    * **Panel Gambar:** Menampilkan (1) Gambar Asli, (2) Gambar Grayscaling dan (3) Visualisasi Laplacian (Tepi/Tekstur).
+    * **Panel Data:** Menampilkan angka "Intensitas (Mean)" dan "Skor Tekstur (Variance)".
+    * **Status Utama:** Hanya dua kemungkinan: **"BERPOTENSI HUJAN"** (Background Merah) atau **"TIDAK BERPOTENSI HUJAN"** (Background Hijau).
+    * Tombol "Simpan Laporan (HTML)".
+
+**Logika Algoritma (Strictly Binary):**
+Buat fungsi `analyze_weather(image_path)`:
+
+1.  **Parameter 1: Intensitas (Warna):**
+    * Convert ke Grayscale. Hitung Mean Pixel.
+    * *Condition A:* Apakah Gelap? (Mean < 100).
+2.  **Parameter 2: Frekuensi (Tekstur/Kekasaran):**
+    * Gunakan `cv2.Laplacian(gray_image, cv2.CV_64F)`.
+    * Hitung `variance` dari hasil Laplacian.
+    * *Condition B:* Apakah Tekstur Rata/Low Frequency? (Variance < 300). *Note: Awan hujan nimbostratus biasanya sangat rata/blur.*
+3.  **Keputusan Akhir (Binary Logic):**
+    * **IF** (Condition A is True) **AND** (Condition B is True):
+        * Result = **"BERPOTENSI HUJAN"**.
+    * **ELSE**:
+        * Result = **"TIDAK BERPOTENSI HUJAN"**.
+
+**Laporan HTML:**
+* Embed gambar Asli, gambar grayscaling (sebagai bukti analisis warna) dan gambar Laplacian (sebagai bukti analisis tekstur) menggunakan Base64.
+* Buat tabel sederhana berisi nilai Mean, Variance, dan Kesimpulan Akhir.
+
+**Constraint:**
+* Berikan komentar penjelasan di atas code dalam **Bahasa Indonesia** menjelaskan dari logika warna dan bentuk hingga pada bagian logika keputusan akhir.
+* Pastikan kode robust (anti-crash) jika file gambar belum dipilih.
+
+***
+
+### Penjelasan Singkat Logika Biner Ini:
+
+* **Kenapa Hujan = Gelap + Rata?**
+    Karena saat hujan deras turun, langit biasanya tertutup awan abu-abu tebal yang seragam (*uniform*). Tidak ada detail gumpalan, tidak ada cahaya matahari. Itu sebabnya kita cari yang **Gelap (Mean Rendah)** dan **Rata (Varian Rendah)**.
+* **Kenapa Cerah = Tidak Hujan?**
+    Langit cerah punya Varian Tinggi (karena ada batas tegas antara awan putih dan langit biru) dan Intensitas Tinggi (Terang).
+
+Prompt ini akan menghasilkan kode yang persis seperti yang Anda butuhkan: **Satu tombol, dua gambar, satu keputusan Ya/Tidak.**
